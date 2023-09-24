@@ -1,52 +1,58 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Greet from "../../components/greet.vue";
+import Greet from "../../components/Greet.vue";
 </script>
 
 <template>
-  <div class="container">
-    <h1>Welcome to Tauri!</h1>
+<div class="container mx-auto p-4">
+        <div class="top flex justify-between items-center mb-4">
+            <router-link to="/login" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                Connexion
+            </router-link>
+            <h1 class="text-3xl font-semibold">Horaires de Prières</h1>
+        </div>
 
-    <div class="row">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-      </a>
-      <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="../../assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
+        
+        
+        <div v-if="isLogin" class="bg-white rounded shadow p-4">
+            <h2 class="text-xl font-semibold mb-2">Aujourd'hui</h2>
+            <ul>
+                <li class="flex justify-between items-center border-b py-2">
+                    <span>Fajr (Aube)</span>
+                    <span>5:30 AM</span>
+                </li>
+                <li class="flex justify-between items-center border-b py-2">
+                    <span>Dhuhr (Midi)</span>
+                    <span>12:30 PM</span>
+                </li>
+                <li class="flex justify-between items-center border-b py-2">
+                    <span>Asr (Après-midi)</span>
+                    <span>4:00 PM</span>
+                </li>
+                <li class="flex justify-between items-center border-b py-2">
+                    <span>Maghrib (Coucher du soleil)</span>
+                    <span>7:30 PM</span>
+                </li>
+                <li class="flex justify-between items-center py-2">
+                    <span>Isha (Nuit)</span>
+                    <span>9:00 PM</span>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white rounded shadow p-4" v-else>
+            <h2 class="text-xl font-semibold mb-2">Aujourd'hui</h2>
+            <p class="text-gray-500">Vous devez vous connecter pour voir les horaires de prières.</p>
+        </div>
     </div>
-
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
-
-    <p>
-      Recommended IDE setup:
-      <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-      +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-      +
-      <a href="https://github.com/tauri-apps/tauri-vscode" target="_blank"
-        >Tauri</a
-      >
-      +
-      <a href="https://github.com/rust-lang/rust-analyzer" target="_blank"
-        >rust-analyzer</a
-      >
-    </p>
-
-    <Greet />
-  </div>
 </template>
 
-<style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
+<script>
+export default {
+    data() {
+        return {
+            isLogin: localStorage.getItem('isLogin') || false,
+        }
+    }
 }
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
-}
-</style>
+</script>
