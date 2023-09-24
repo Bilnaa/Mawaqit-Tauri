@@ -2,7 +2,6 @@
   "name": "mawaqit-tauri",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,12 +10,18 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.4.0",
+    "axios-tauri-api-adapter": "^0.2.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
     "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.4"
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
+    "sass": "1.57.0",
+    "sass-loader": "13.2.0",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.9"
   }
 }
